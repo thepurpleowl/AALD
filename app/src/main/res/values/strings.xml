@@ -5,4 +5,6 @@
     <string name="voice">Voice Input</string>
     <string name="confirm">Confirm</string>
     <string name="contact">Enter a phone number or email address</string>
+    <string name="msg_subject">message from Surya</string>
+    <string name="share_using">share via</string>
 </resources>

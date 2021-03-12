@@ -35,9 +35,27 @@ public class SendActivity extends AppCompatActivity {
         String contact = editText.getText().toString();
 
         if(isValidMail(contact)){
-
+            Intent mailIntent = new Intent(Intent.ACTION_SEND);
+            mailIntent.setType("message/rfc822");
+            mailIntent.putExtra(Intent.EXTRA_EMAIL  , contact);
+            mailIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.msg_subject));
+            mailIntent.putExtra(Intent.EXTRA_TEXT   , message);
+            try {
+                startActivity(Intent.createChooser(mailIntent, "Send mail..."));
+            } catch (android.content.ActivityNotFoundException ex) {
+                Toast.makeText(this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+            }
         }
         else if(isValidMobile(contact)){
+            Intent phoneIntent = new Intent(android.content.Intent.ACTION_SEND);
+            phoneIntent.setType("text/plain");
+            phoneIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, getString(R.string.msg_subject));
+            phoneIntent.putExtra(android.content.Intent.EXTRA_TEXT, message);
+            try {
+                startActivity(Intent.createChooser(phoneIntent, getString(R.string.share_using)));
+            } catch (android.content.ActivityNotFoundException ex) {
+                Toast.makeText(this, "There are no text send apps installed.", Toast.LENGTH_SHORT).show();
+            }
 
         }
         else{
