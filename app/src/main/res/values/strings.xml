@@ -1,10 +1,12 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">My Application by Surya</string>
     <string name="msg">Enter a message</string>
     <string name="send">Send</string>
     <string name="voice">Voice Input</string>
     <string name="confirm">Confirm</string>
     <string name="contact">Enter a phone number or email address</string>
-    <string name="msg_subject">message from Surya</string>
-    <string name="share_using">share via</string>
+    <string name="msg_subject">Message from Surya</string>
+    <string name="phone_share">Sending text SMS …</string>
+    <string name="mail_share">Sending email …</string>
+    <string name="contact_error">"Enter a valid phone number or email address"</string>
 </resources>
