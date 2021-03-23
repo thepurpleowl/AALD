@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,6 +13,7 @@ import android.widget.EditText;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "DEBUG_MSG";
     private Button sendButton, voiceIPButton;
     private EditText editText;
 
@@ -21,13 +23,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d(TAG, "in method onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-//        if (savedInstanceState != null) {
-//            String msg = savedInstanceState.getString(SAVED_MESSAGE);
-//            editText.setText(msg);
-//        }
 
         editText  = (EditText) findViewById(R.id.msg_field);
         voiceIPButton = (Button) findViewById(R.id.voice_button);
@@ -78,22 +76,40 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-//    @Override
-//    public void onSaveInstanceState(Bundle savedInstanceState) {
-//        super.onSaveInstanceState(savedInstanceState);
-//
-//        String msg = editText.getText().toString();
-//        savedInstanceState.putString(SAVED_MESSAGE, msg);
-//    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d(TAG, "in method onStart");
+    }
 
-//    //system calls onRestoreInstanceState() after the onStart() method.
-//    @Override
-//    public void onRestoreInstanceState(Bundle savedInstanceState) {
-//        // Always call the superclass so it can restore the view hierarchy
-//        super.onRestoreInstanceState(savedInstanceState);
-//
-//        String msg = savedInstanceState.getString(SAVED_MESSAGE);
-//        editText.setText(msg);
-//    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(TAG, "in method onResume");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d(TAG, "in method onRestart");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(TAG, "in method onPause");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(TAG, "in method onStop");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "in method onDestroy");
+    }
 
 }
