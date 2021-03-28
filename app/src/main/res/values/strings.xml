@@ -9,4 +9,7 @@
     <string name="phone_share">Sending text SMS …</string>
     <string name="mail_share">Sending email …</string>
     <string name="contact_error">"Enter a valid phone number or email address"</string>
+
+
+    <string name="test_msg">Hello World</string>
 </resources>
