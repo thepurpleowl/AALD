@@ -16,6 +16,7 @@ public class SendActivity extends AppCompatActivity {
     private Button confirmButton;
     private EditText editText;
     public static final String REGEX_PHONE = "^([0]|\\+91|91)?[-\\s]?\\d{10}";
+    public static final String REGEX_EMAIL = "^([\\w\\.\\-]+)@([\\w\\-]+)((\\.(\\w){2,3})+)$";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +33,8 @@ public class SendActivity extends AppCompatActivity {
     }
 
     private boolean isValidMail(String email) {
-        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+        return (android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
+                && Pattern.matches(REGEX_EMAIL, email));
     }
 
     private boolean isValidMobile(String phone) {
