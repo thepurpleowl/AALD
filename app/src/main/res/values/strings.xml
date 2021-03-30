@@ -4,9 +4,9 @@
     <string name="send">Send</string>
     <string name="voice">Voice Input</string>
     <string name="confirm">Confirm</string>
-    <string name="contact">Enter a phone number or email address</string>
+    <string name="contact">Enter a phone number or an email address</string>
     <string name="msg_subject">Message from Surya</string>
-    <string name="phone_share">Sending text SMS …</string>
+    <string name="phone_share">Sending SMS …</string>
     <string name="mail_share">Sending email …</string>
     <string name="contact_error">"Enter a valid phone number or email address"</string>
     <string name="no_mail_app">There are no email clients installed.</string>
