@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -49,6 +51,10 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, SendActivity.class);
         EditText editText = (EditText) findViewById(R.id.msg_field);
         String message = editText.getText().toString();
+        if(TextUtils.isEmpty(message)) {
+            Toast.makeText(this, R.string.empty_msg, Toast.LENGTH_SHORT).show();
+            return;
+        }
         intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);
     }
