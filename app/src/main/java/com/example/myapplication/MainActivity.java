@@ -20,12 +20,11 @@ public class MainActivity extends AppCompatActivity {
     private EditText editText;
 
     private static final int SPEECH_REQUEST_CODE = 0;
-    private static final String SAVED_MESSAGE = "savedMessage";
     public static final String EXTRA_MESSAGE = "textMessage";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.d(TAG, "in method onCreate");
+        Log.d(TAG, "in method onCreate: MainActivity");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -85,37 +84,37 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        Log.d(TAG, "in method onStart");
+        Log.d(TAG, "in method onStart: MainActivity");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Log.d(TAG, "in method onResume");
+        Log.d(TAG, "in method onResume: MainActivity");
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-        Log.d(TAG, "in method onRestart");
+        Log.d(TAG, "in method onRestart: MainActivity");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Log.d(TAG, "in method onPause");
+        Log.d(TAG, "in method onPause: MainActivity");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        Log.d(TAG, "in method onStop");
+        Log.d(TAG, "in method onStop: MainActivity");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.d(TAG, "in method onDestroy");
+        Log.d(TAG, "in method onDestroy: MainActivity");
     }
 
 }

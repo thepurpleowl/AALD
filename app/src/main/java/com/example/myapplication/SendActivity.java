@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,10 +16,12 @@ import java.util.regex.Pattern;
 public class SendActivity extends AppCompatActivity {
     private Button confirmButton;
     private EditText editText;
+    private static final String TAG = "DEBUG_MSG";
     public static final String REGEX_PHONE = "^(0|\\+91|91)?[-\\s]?\\d{10}";
     public static final String REGEX_EMAIL = "^([\\w\\.]+)@([\\w]+)((\\.(\\w){2,3})+)$";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d(TAG, "in method onCreate: SendActivity");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send);
 
@@ -83,5 +86,42 @@ public class SendActivity extends AppCompatActivity {
 //            Toast.makeText(this, getString(R.string.contact_error), Toast.LENGTH_LONG).show();
             editText.setText(R.string.contact_error);
         }
+    }
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d(TAG, "in method onStart: SendActivity");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(TAG, "in method onResume: SendActivity");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d(TAG, "in method onRestart: SendActivity");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(TAG, "in method onPause: SendActivity");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(TAG, "in method onStop: SendActivity");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "in method onDestroy: SendActivity");
     }
 }
