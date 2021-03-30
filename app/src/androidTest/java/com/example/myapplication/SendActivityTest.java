@@ -45,8 +45,8 @@ public class SendActivityTest {
     private static final String EMAIL = "johnhoe@.iisc.ac.in";
     private static final String PHONE = "789324";
     private static final String PACKAGE_NAME = "com.example.myapplication";
-    public static final String REGEX_PHONE = "^([0]|\\+91|91)?[-\\s]?\\d{10}";
-    public static final String REGEX_EMAIL = "^([\\w\\.\\-]+)@([\\w\\-]+)((\\.(\\w){2,3})+)$";
+    public static final String REGEX_PHONE = "^(0|\\+91|91)?[-\\s]?\\d{10}";
+    public static final String REGEX_EMAIL = "^([\\w\\.]+)@([\\w]+)((\\.(\\w){2,3})+)$";
 
     @Rule
     public ActivityScenarioRule<SendActivity> sendActivityRule = new ActivityScenarioRule<>(SendActivity.class);

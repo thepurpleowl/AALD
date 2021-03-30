@@ -72,35 +72,33 @@ public class MainActivityTest {
 
     }
 
-    @Test
-    public void useAppContext() {
-        ActivityScenario scenario = activityRule.getScenario();
-        scenario.moveToState(Lifecycle.State.RESUMED);
-        // Context of the app under test.
-        Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.example.myapplication", appContext.getPackageName());
-    }
+//    @Test
+//    public void useAppContext() {
+//        ActivityScenario scenario = activityRule.getScenario();
+//        scenario.moveToState(Lifecycle.State.RESUMED);
+//        // Context of the app under test.
+//        Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
+//        assertEquals("com.example.myapplication", appContext.getPackageName());
+//    }
 
     @Test
     public void verifyMessageSenttoSendActivity() {
         ActivityScenario scenario = activityRule.getScenario();
         scenario.moveToState(Lifecycle.State.RESUMED);
-        // Types a message into a EditText element.
+        // Types message into a EditText element.
         onView(withId(R.id.msg_field))
                 .perform(typeText(MESSAGE), closeSoftKeyboard());
 
-        // Clicks a button to send the message to another
-        // activity through an explicit intent.
+        // Clicks button to send the message to another activity through an explicit intent.
         onView(withId(R.id.send_button)).perform(click());
 
-        // Verifies that the DisplayMessageActivity received an intent
-        // with the correct package name and message.
+        // Verifies that the SendActivity received an intent with the correct package name and message.
         intended(allOf(
                 hasComponent(hasShortClassName(".SendActivity")),
                 toPackage(PACKAGE_NAME),
                 hasExtra(MainActivity.EXTRA_MESSAGE, MESSAGE)));
 
-//        scenario.close();
+        scenario.close();
     }
 
     @Test
@@ -108,13 +106,18 @@ public class MainActivityTest {
         ActivityScenario scenario = activityRule.getScenario();
         scenario.moveToState(Lifecycle.State.RESUMED);
 
-        // Types a message into a EditText element.
+        // Types message into a EditText element.
         onView(withId(R.id.msg_field))
                 .perform(typeText(MESSAGE), closeSoftKeyboard());
 
         onView(withId(R.id.send_button)).perform(click());
+
+        //Comes back from SendActivity.
         pressBack();
+
         onView(withId(R.id.msg_field)).check(matches(withText(R.string.test_msg)));
+
+        scenario.close();
     }
 
     @Test
@@ -124,22 +127,25 @@ public class MainActivityTest {
 
         Intent resultData = new Intent();
         resultData.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-//        resultData.putExtra(RecognizerIntent.EXTRA_RESULTS, new String[]{UTTERANCE});
+
+//         RecognizerIntent returns an ArrayList, so array of String; as following won't perform corretly.
+//         resultData.putExtra(RecognizerIntent.EXTRA_RESULTS, new String[]{UTTERANCE});
+
         resultData.putExtra(RecognizerIntent.EXTRA_RESULTS, new ArrayList<String>(Arrays.asList(UTTERANCE)));
         Instrumentation.ActivityResult result =
                 new Instrumentation.ActivityResult(Activity.RESULT_OK, resultData);
+
         // stub intent returning recognition results
-//        intending(hasAction(equalTo(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)))
-//                .respondWith(new Instrumentation.ActivityResult(Activity.RESULT_OK, new Intent().putExtra(
-//                        SpeechRecognizer.RESULTS_RECOGNITION, new String[]{UTTERANCE})));
         intending(hasAction(equalTo(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)))
                 .respondWith(result);
 
-//        scenario.moveToState(Lifecycle.State.RESUMED);
         // when clicking on the buttonVoice, thus opening the dialog and starting the speechRecognizer
         onView(withId(R.id.voice_button))
                 .perform(click());
+
         // expect the recognition results to be displayed
         onView(withId(R.id.msg_field)).check(matches(withText(UTTERANCE)));
+
+        scenario.close();
     }
 }
