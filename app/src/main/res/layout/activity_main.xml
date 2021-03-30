@@ -31,6 +31,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textColor="@color/white"
             android:text="@string/send" />
     </LinearLayout>
 
@@ -38,6 +39,7 @@
         android:id="@+id/voice_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/white"
         android:text="@string/voice"
         android:layout_gravity="left" />
 <!--    change from android:layout_gravity="center_horizontal" as per specification!!-->
