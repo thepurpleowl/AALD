@@ -15,8 +15,8 @@ import java.util.regex.Pattern;
 public class SendActivity extends AppCompatActivity {
     private Button confirmButton;
     private EditText editText;
-    public static final String REGEX_PHONE = "^([0]|\\+91|91)?[-\\s]?\\d{10}";
-    public static final String REGEX_EMAIL = "^([\\w\\.\\-]+)@([\\w\\-]+)((\\.(\\w){2,3})+)$";
+    public static final String REGEX_PHONE = "^(0|\\+91|91)?[-\\s]?\\d{10}";
+    public static final String REGEX_EMAIL = "^([\\w\\.]+)@([\\w]+)((\\.(\\w){2,3})+)$";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +62,7 @@ public class SendActivity extends AppCompatActivity {
                 startActivity(Intent.createChooser(mailIntent, getString(R.string.mail_share)));
                 Toast.makeText(this, getString(R.string.mail_share),Toast.LENGTH_SHORT).show();
             } catch (android.content.ActivityNotFoundException ex) {
-                Toast.makeText(this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.no_mail_app, Toast.LENGTH_SHORT).show();
             }
         }
         else if(isValidMobile(contact)){
@@ -75,7 +75,7 @@ public class SendActivity extends AppCompatActivity {
             try {
                 startActivity(Intent.createChooser(phoneIntent, getString(R.string.phone_share)));
             } catch (android.content.ActivityNotFoundException ex) {
-                Toast.makeText(this, "There are no text send apps installed.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.no_chat_app, Toast.LENGTH_SHORT).show();
             }
             Toast.makeText(this, getString(R.string.phone_share),Toast.LENGTH_SHORT).show();
         }

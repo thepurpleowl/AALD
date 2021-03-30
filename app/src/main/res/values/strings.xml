@@ -9,6 +9,9 @@
     <string name="phone_share">Sending text SMS …</string>
     <string name="mail_share">Sending email …</string>
     <string name="contact_error">"Enter a valid phone number or email address"</string>
+    <string name="no_mail_app">There are no email clients installed.</string>
+    <string name="no_chat_app">There are no text send apps installed.</string>
+    <string name="empty_msg">Please enter a message</string>
 
 
     <string name="test_msg">Hello World</string>
