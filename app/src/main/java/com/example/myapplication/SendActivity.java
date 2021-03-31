@@ -73,8 +73,7 @@ public class SendActivity extends AppCompatActivity {
 //            phoneIntent.setType("text/plain");
             Intent phoneIntent = new Intent(Intent.ACTION_SENDTO);
             phoneIntent.setData(Uri.parse("smsto:"+contact));
-            phoneIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, getString(R.string.msg_subject));
-            phoneIntent.putExtra(android.content.Intent.EXTRA_TEXT, message);
+            phoneIntent.putExtra("sms_body", message);
             try {
                 startActivity(Intent.createChooser(phoneIntent, getString(R.string.phone_share)));
             } catch (android.content.ActivityNotFoundException ex) {
