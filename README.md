@@ -1,4 +1,5 @@
-# 2021-A1-04-04-00-10-22-20-1-18328
-E0 202 Assignment 1 Android Application
+# AALD: Android_Activity_Lifecycle_Demo
 
-A simple Android application to understand the life cycle management.
+A simple Android application develeoped in TDD, to understand the life cycle management.
+
+Orignially submitted for `E0 202 Assignment 1 Android Application`.
